@@ -1,19 +1,38 @@
+<!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-  <title>Scotland</title>
-  <link rel="stylesheet" href="https://js.arcgis.com/4.24/esri/themes/light/main.css" />
-  <script src="https://js.arcgis.com/4.24/"></script>
+  <title>ArcGIS MapView Example</title>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/themes/light/main.css" />
+  <script src="https://js.arcgis.com/4.18/"></script>
+  <style>
+    #viewDiv {
+      height: 100%;
+      width: 100%;
+    }
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
 </head>
-
 <body>
   <div id="viewDiv"></div>
-  <!--A container the button-->
-  <div id="buttonContainer">
-    <button id="clickButton">Click</button>
-  </div>
-</body>
+  <script>
+    require(["esri/views/MapView", "esri/WebMap"], function(MapView, WebMap) {
+      const webmap = new WebMap({
+        portalItem: {
+          id: "d4a2e2c8ea9f496187b7311f973421a6"
+        }
+      });
 
+      const view = new MapView({
+        map: webmap,
+        container: "viewDiv"
+      });
+    });
+  </script>
+</body>
 </html>
